@@ -17,7 +17,7 @@ const KpiCard: React.FC<KpiCardProps> = ({ title, value, change, icon, onClick, 
     <div
       onClick={onClick}
       className={`
-        flex flex-col p-4 rounded-[25px] relative transition h-fit justify-between flex-1 whitespace-nowrap
+        flex flex-col p-4 rounded-[25px] relative transition justify-between flex-1 whitespace-nowrap m-0
         ${selected
           ? 'bg-white text-[#0D525C] border-2 border-[#0D525C]'
           : 'bg-[#0D525C] text-white'
@@ -47,7 +47,7 @@ const KpiCard: React.FC<KpiCardProps> = ({ title, value, change, icon, onClick, 
       </div>
 
       {/* Value section */}
-      <h2 className="text-2xl font-bold mt-2">{value}</h2>
+      <h2 className="text-2xl font-bold">{value}</h2>
     </div>
   );
 };
