@@ -75,7 +75,7 @@ function NavSideBar() {
 
         return(
             <div className="flex h-full">
-                <nav className="w-64 bg-background text-white flex flex-col p-4 flex-shrink-0">
+                <nav className="w-64 bg-primary text-white flex flex-col p-4 flex-shrink-0">
                     {/* Logo */}
                     <div className='text-5xl font-extrabold pb-6 text-secondary text-center' >
                         FGC

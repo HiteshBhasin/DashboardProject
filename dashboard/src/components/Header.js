@@ -43,7 +43,7 @@ function Header(){
     }
     return(
         <header className="
-            flex justify-between items-center w-full p-5 bg-primaryColour border-b border-light-grey relative top-0 z-10 max-h-20
+            flex justify-between items-center w-full p-5 bg-primary border-b border-light-grey relative top-0 z-10 max-h-20
         ">
            <SearchBar />
            <UserInfo user={mockUser} />
