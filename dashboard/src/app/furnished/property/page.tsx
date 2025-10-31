@@ -20,6 +20,7 @@ export default function Home() {
         <KpiCard title="Vacant Units" value={data.vacantUnits} change={-1} />
         <KpiCard title="Outstanding Balance" value={data.outstandingBalance} change={-5} />
       </div>
+
     </div>
 
     
