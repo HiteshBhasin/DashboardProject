@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+/* @import "tw-animate-css"; */ /* I didn't know why this import gave me an error, so I just commented it out */
+
 
 :root {
   --background: #F3F3F3;
