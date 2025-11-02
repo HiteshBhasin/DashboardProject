@@ -4,8 +4,8 @@ import {Search, CircleUserRound, Sparkles} from 'lucide-react';
 const UserInfo = ({user}) => (
     <div className='flex items-center'>
         {/*Profile Picture*/}
-        <div className='w-10 h-10 rounded-full bg-light-grey flex items-center justify-center overflow-hidden  mr-3'>
-            <img src={user.photo} className="w-full h-full object-cover"/>
+        <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden  mr-3'>
+            <CircleUserRound size={40} className='text-primary' />
         </div>
 
         {/*Name and Position*/}
@@ -39,7 +39,6 @@ function Header(){
     const mockUser = {
         name: 'Cam Finnson',
         position: 'President/CEO',
-        photo: <CircleUserRound size={10} className='text-primary'/>
     }
     return(
         <header className="
