@@ -1,5 +1,6 @@
 import { columns, Properties } from "./columns"
 import { DataTable } from "./data-table"
+import SectionMenu from "../../../../components/SectionMenu";
 
 async function getData(): Promise<Properties[]> {
     // Fetch data from your API here.
@@ -55,9 +56,18 @@ async function getData(): Promise<Properties[]> {
 export default async function DemoPage() {
     const data = await getData()
 
+    const sections = [
+    {href: '/longterm/housekeeping', name:'Overview'},
+    {href: '/longterm/housekeeping/maintenance', name:'Maintenance'},
+    {href: '/longterm/housekeeping/cleaning', name:'Cleaning'}
+    ];
     return (
-        <div className="container mx-auto py-10">
-            <DataTable columns={columns} data={data} />
+
+        <div className ="flex flex-col gap-1 ">
+            <SectionMenu sectionName='Long-term Housekeeping' navLinks={sections} />
+            <div className="container mx-auto py-1">
+                <DataTable columns={columns} data={data} />
+            </div>
         </div>
     )
 }

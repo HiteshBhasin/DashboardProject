@@ -1,7 +1,7 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal, CircleUserRoundIcon } from "lucide-react"
+import { MoreHorizontal, CircleUserRoundIcon, Play, ClockAlert, Check, Clock, CircleQuestionMark, LucideIcon, Icon} from "lucide-react"
 import { ArrowUpDown } from "lucide-react"
 import { Button } from "../../../../components/table/button"
 import {DataTableColumnHeader} from "./data-table-column-header"
@@ -38,7 +38,7 @@ export const columns: ColumnDef<Properties>[] = [
         cell: ({ row }) => {
         const task = row.getValue("task") as string;
         return (
-        <div className="w-[50%] flex items-center gap-3">
+        <div className="w-[50%] flex items-center gap- font-semibold">
         <span>{task}</span>
         </div>
         )
@@ -117,20 +117,47 @@ export const columns: ColumnDef<Properties>[] = [
         cell: ({row}) => {
             const status = row.getValue("status") as string
 
-            //Define colors based off the status
-            const color =
-            status === "In Progress"
-                ? "text-yellow-600 bg-yellow-100"
-                : status === "Completed"
-                ? "text-green-600 bg-green-100"
-                : status === "Pending"
-                ? "text-gray-600 bg-gray-100"
-                : status === "Overdue"
-                ? "text-red-600 bg-red-100"
-                : "text-gray-700"
+            // //Define colors based off the status
+            // const color =
+            //     status === "In Progress"
+            //     ? "text-yellow-600 bg-yellow-100"
+            //     : status === "Completed"
+            //     ? "text-green-600 bg-green-100"
+            //     : status === "Pending"
+            //     ? "text-gray-600 bg-gray-100"
+            //     : status === "Overdue"
+            //     ? "text-red-600 bg-red-100"
+            //     : "text-gray-700"
+            const statusStyles: Record<string, { color: string; icon: LucideIcon}> = {
+                "In Progress": {
+                    color: "text-yellow-600 bg-yellow-100",
+                    icon: Play
+                },
+                Completed: {
+                    color: "text-green-600 bg-green-100",
+                    icon: Check,
+                },
+                Pending: {
+                    color: "text-gray-600 bg-gray-100",
+                    icon: Clock
+                },
+                Overdue: {
+                    color: "text-red-600 bg-red-100",
+                    icon: ClockAlert
+                },
+            };
+
+            // Get the appropriate style object
+            const style = statusStyles[status] || {
+                color: "text-gray-700 bg-gray-50",
+                icon: <CircleQuestionMark className="w-4 h-4 text-gray-500" />,
+            };
+
+            const Icon = style.icon;
 
             return (
-                <span className={`px-3 py-1 text-sm font-medium rounded-full ${color}`}>
+                <span className={`w-fit flex items-center gap-2 px-3 py-1 text-sm font-medium rounded-full ${style.color}`}>
+                    <Icon className="w-4 h-4" />
                     {status}
                 </span>
             )
