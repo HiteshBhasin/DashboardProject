@@ -1,11 +1,11 @@
 'use client';
-import {Search, CircleUserRound, Sparkles} from 'lucide-react';
+import {RiSearchAiLine, RiAccountCircleFill, RiNotification3Fill} from '@remixicon/react';
 
 const UserInfo = ({user}) => (
     <div className='flex items-center'>
         {/*Profile Picture*/}
-        <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden  mr-3'>
-            <CircleUserRound size={40} className='text-primary' />
+        <div className='w-10 h-10 flex items-center justify-center overflow-hidden mr-3'>
+            <RiAccountCircleFill size={40} className='text-white' />
         </div>
 
         {/*Name and Position*/}
@@ -22,15 +22,20 @@ const UserInfo = ({user}) => (
 );
 
 const SearchBar = () => (
-    <div className='flex flex-col relative w-full max-w-md rounded-3x1'>
-        <Search size={20} className='absolute left-3 top-2 transform text-primary' />
+    <div className='flex flex-col relative w-full max-w-md rounded-full flex-1'>
+        <RiSearchAiLine size={20} className='absolute left-3 top-2 transform text-primary' />
         <input 
             type='text'
             placeholder='Search'
-            className='w-200 pl-10 pr-4 py-2 text-sm rounded-3x1 focus:outline-none focus:border-primary 
+            className='w-175 pl-10 pr-4 py-2 text-sm rounded-full focus:outline-none focus:border-primary 
                 transition duration-150 bg-white text-primary'
         />
-        <Sparkles size={20} className='absolute left-192.5 top-2 transform text-primary' />
+    </div>
+);
+
+const Notification = () => (
+    <div className='w-10 h-10 flex items-center justify-center overflow-hidden ml-100'>
+        <RiNotification3Fill size={30} className='text-white' />
     </div>
 );
 
@@ -42,9 +47,10 @@ function Header(){
     }
     return(
         <header className="
-            flex justify-between items-center w-full p-5 bg-primary border-b border-light-grey relative top-0 z-10 max-h-20
+            flex justify-between items-center w-full p-5 bg-primary relative top-0 z-10 max-h-20
         ">
            <SearchBar />
+           <Notification />
            <UserInfo user={mockUser} />
         </header>
 

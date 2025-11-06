@@ -2,53 +2,53 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
-    SquareChartGantt, House, BrushCleaning, BookUser, WineOff, UserRound, BanknoteArrowDown,
-    ClipboardList, CircleDollarSign, DollarSign, Presentation, ChartLine, TriangleAlert,
-    Settings, LogOut
-    } from 'lucide-react';
+    RiDashboardFill, RiHome2Fill, RiBrush3Fill, RiContactsBook2Fill, RiGobletBrokenFill, RiUserFill, RiHandCoinFill,
+    RiClipboardFill, RiMoneyDollarCircleFill, RiMoneyDollarBoxFill, RiAdvertisementFill, RiLineChartFill, RiAlertFill,
+    RiSettings3Fill, RiLogoutBoxFill
+    } from '@remixicon/react';
 
 const navLinks = [
-    {type: 'link', name: 'Overview', href: '/', icon: SquareChartGantt},
+    {type: 'link', name: 'Overview', href: '/', icon: RiDashboardFill},
     {
         type: 'section', 
         title: 'Furnished Management',
         items: [
-            {name: 'Property Status', href: '/furnished/property', icon: House},
-            {name: 'Guest Booking', href: '/furnished/booking', icon: BookUser},
-            {name: 'Housekeeping', href: '/furnished/housekeeping', icon: BrushCleaning},
-            {name: 'Incident & Claim', href: '/furnished/incident', icon: WineOff}
+            {name: 'Property Status', href: '/furnished/property', icon: RiHome2Fill},
+            {name: 'Guest Booking', href: '/furnished/booking', icon: RiContactsBook2Fill},
+            {name: 'Housekeeping', href: '/furnished/housekeeping', icon: RiBrush3Fill},
+            {name: 'Incident & Claim', href: '/furnished/incident', icon: RiGobletBrokenFill}
         ]
     },
     {
         type: 'section', 
         title: 'Long-term Management',
         items: [
-            {name: 'Tenants', href: '/longterm/tenants', icon: UserRound},
-            {name: 'Housekeeping', href: '/longterm/housekeeping', icon: BrushCleaning},
-            {name: 'Montly Payout', href: '/longterm/monthlypayout', icon: BanknoteArrowDown},
-            {name: 'Leases', href: '/longterm/leases', icon: ClipboardList}
+            {name: 'Tenants', href: '/longterm/tenants', icon: RiUserFill},
+            {name: 'Housekeeping', href: '/longterm/housekeeping', icon: RiBrush3Fill},
+            {name: 'Montly Payout', href: '/longterm/monthlypayout', icon: RiHandCoinFill},
+            {name: 'Leases', href: '/longterm/leases', icon: RiClipboardFill}
         ]
     },
     {
         type: 'section', 
         title: 'Operations',
         items: [
-            {name: 'Core Financials', href: '/operation/corefinance', icon: CircleDollarSign},
-            {name: 'Managed Financials', href: '/operation/managefinance', icon: DollarSign},
-            {name: 'Marketing', href: '/operation/marketing', icon: Presentation},
-            {name: 'Analytics', href: '/operation/analytics', icon: ChartLine},
-            {name: 'Alert', href: '/operation/alert', icon: TriangleAlert},
+            {name: 'Core Financials', href: '/operation/corefinance', icon: RiMoneyDollarCircleFill},
+            {name: 'Managed Financials', href: '/operation/managefinance', icon: RiMoneyDollarBoxFill},
+            {name: 'Marketing', href: '/operation/marketing', icon: RiAdvertisementFill},
+            {name: 'Analytics', href: '/operation/analytics', icon: RiLineChartFill},
+            {name: 'Alert', href: '/operation/alert', icon: RiAlertFill},
         ]
     }
 ];
 
 const bottomButtons = [
-    {name: 'Settings', href: '/settings', icon: Settings},
-    {name: 'Log-out', href: '/log-in', icon: LogOut}
+    {name: 'Settings', href: '/settings', icon: RiSettings3Fill},
+    {name: 'Log-out', href: '/log-in', icon: RiLogoutBoxFill}
 ];
 
 function NavSideBar() {
-    const pathname = usePathname(); //Get the current path of the page.
+    const pathname = usePathname(); //Get the current path of the page
 
     const NavLinkItem = ({link}) => {
         const Icon = link.icon; //Set a simplified nickname for each icons of the page.
@@ -60,7 +60,7 @@ function NavSideBar() {
                 className={`
                 flex items-center p-1 rounded-lg transition-colors
                 ${isActive 
-                    ? 'bg-secondary text-white font-bold' 
+                    ? 'bg-secondary text-white' 
                     : 'hover:bg-light-gray hover:text-white' 
                 }
                 `} 
@@ -74,15 +74,15 @@ function NavSideBar() {
     };
 
         return(
-            <div className="flex h-full">
-                <nav className="w-64 bg-primary text-white flex flex-col p-4 flex-shrink-0">
+            <div className="flex h-full z-20">
+                <nav className="w-64 bg-primary text-white flex flex-col p-4 flex-shrink-0 sticky">
                     {/* Logo */}
                     <div className='text-5xl font-extrabold pb-6 text-secondary text-center' >
                         FGC
                     </div>
 
                     {/* Main Navigation */}
-                    <div className='flex-grow overflow-y-auto space-y-6'>
+                    <div className='flex-grow overflow-y-auto space-y-6 pt-10'>
                         {navLinks.map((item, index) => (
                             <div key={index}>
                                 {item.type === 'link' && (
@@ -93,7 +93,7 @@ function NavSideBar() {
                                 {item.type === 'section' && (
                                     //Place the section and buttons
                                     <>
-                                        <h3 className='text-sm font-bold uppercase mt-2 mb-1 px-2 text-light-grey'>
+                                        <h3 className='text-sm font-bold uppercase mt-2 mb-1 px-2 text-navgrey'>
                                             {item.title}
                                         </h3>
                                         <div className='space-y-1'> {/*this gets the items within the section*/}
@@ -109,7 +109,7 @@ function NavSideBar() {
                         ))}
                     </div>
                     {/*Bottom Buttons*/}
-                    <div className="mt-auto pt-3 pt-20 space-y-1">
+                    <div className="mt-auto pt-3 pt-15 space-y-1">
                         {bottomButtons.map((link, index) => (
                             <NavLinkItem key={index} link={link} />
                         ))}
