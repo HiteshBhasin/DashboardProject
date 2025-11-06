@@ -6,34 +6,39 @@ async function getData(): Promise<Properties[]> {
     return [
         {
             task: "Unit Repair",
-            assigned_to: "Cameron Finnson",
+            task_id: "#99999",
+            assigned_to: "Cam",
             due_at: new Date("9999-12-31"), // Represents December 31, 9999
             property: "121-123 Clyde Road",
             status: "In Progress",
         },
         {
             task: "Unit Repair",
+            task_id: "#99999",
             assigned_to: "Cameron Finnson",
             due_at: new Date("9999-12-31"), // Represents December 31, 9999
             property: "121-123 Clyde Road",
-            status: "In Progress",
+            status: "Pending",
         },
         {
             task: "Unit Repair",
+            task_id: "#99999",
             assigned_to: "Cameron Finnson",
             due_at: new Date("9999-12-31"), // Represents December 31, 9999
             property: "121-123 Clyde Road",
-            status: "In Progress",
+            status: "Overdue",
         },
         {
             task: "Unit Repair",
+            task_id: "#99999",
             assigned_to: "Cameron Finnson",
             due_at: new Date("9999-12-31"), // Represents December 31, 9999
             property: "121-123 Clyde Road",
-            status: "In Progress",
+            status: "Completed",
         },
         {
             task: "Unit Repair",
+            task_id: "#99999",
             assigned_to: "Cameron Finnson",
             due_at: new Date("9999-12-31"), // Represents December 31, 9999
             property: "121-123 Clyde Road",
