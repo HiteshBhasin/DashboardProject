@@ -3,15 +3,15 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import Header from "../ChildComponentsJS/Header";
-import NavSideBar from "../ChildComponentsJS/NavSideBar";
-import PageTitle from "../ChildComponentsJS/PageTitle";
-import Tabs from "../ChildComponentsJS/Tabs";
-import ArrowAndDescription from "../ChildComponentsJS/ArrowAndDescription";
-import Button from "../ChildComponentsJS/Buttons";
-import RegularCard from "../ChildComponentsJS/DetailCard";
-import SpecialCard from "../ChildComponentsJS/SpecialCard";
-import SearchBar from "../ChildComponentsJS/SearchBar";
+import Header from "../../ChildComponentsJS/Header";
+import NavSideBar from "../../ChildComponentsJS/NavSideBar";
+import PageTitle from "../../components/PageTitle";
+import Tabs from "../../components/Tabs";
+import ArrowAndDescription from "../../ChildComponentsJS/ArrowAndDescription";
+import Button from "../../ChildComponentsJS/Buttons";
+import RegularCard from "../../ChildComponentsJS/DetailCard";
+import SpecialCard from "../../ChildComponentsJS/SpecialCard";
+import SearchBar from "../../ChildComponentsJS/SearchBar";
 
 interface EmergencyContact {
   name: string;

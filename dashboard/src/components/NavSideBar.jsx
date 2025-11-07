@@ -25,7 +25,7 @@ const navLinks = [
         items: [
             {name: 'Tenants', href: '/longterm/tenants', icon: RiUserFill},
             {name: 'Housekeeping', href: '/longterm/housekeeping', icon: RiBrush3Fill},
-            {name: 'Montly Payout', href: '/longterm/monthlypayout', icon: RiHandCoinFill},
+            {name: 'Monthly Payout', href: '/longterm/monthlypayout', icon: RiHandCoinFill},
             {name: 'Leases', href: '/longterm/leases', icon: RiClipboardFill}
         ]
     },

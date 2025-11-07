@@ -68,7 +68,7 @@ export default function PieGraph({title, labels, dataValues, colors, hoverColors
   };
 
   return (
-    <div className="p-6 bg-white shadow-xl rounded-xl border border-gray-100 transition-shadow hover:shadow-2xl">
+    <div className="p-6 bg-white shadow-lg rounded-xl border border-gray-100 transition-shadow hover:shadow-2xl">
       {/* Use a fixed inner container to ensure the doughnut chart renders correctly */}
       <div className="h-80 w-full flex justify-center items-center">
         <div className="w-64 h-64 md:w-80 md:h-80">

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { IoArrowBackSharp } from "react-icons/io5";
+import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface ArrowAndDescriptionProps {
@@ -32,7 +32,7 @@ const ArrowAndDescription: React.FC<ArrowAndDescriptionProps> = ({
         className="text-[#0D525C] cursor-pointer hover:opacity-80"
         onClick={handleBack}
       >
-        <IoArrowBackSharp size={50} />
+        <ArrowLeft size={50} />
       </div>
 
       {/* Description */}

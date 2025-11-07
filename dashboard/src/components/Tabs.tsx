@@ -14,19 +14,20 @@ const Tabs: React.FC<TabsProps> = ({
   onTabClick = () => {},
 }) => {
   return (
-    <div className="flex items-center justify-start pt-12 gap-16 border-b-2 border-[#6B888D] w-full max-w-[95%] pb-1">
+    <div className="flex flex-wrap gap-7 ml-1 whitespace-nowrap
+    border-b-1 border-light-grey mb-2 text-base text-sm w-full">
       {tabs.map((label, index) => (
-        <span
+        <div
           key={index}
           onClick={() => onTabClick(index)}
-          className={`text-2xl font-semibold leading-7 font-sans cursor-pointer pl-1.5 pb-2 ${
+          className={`flex items-center transition-colors cursor-pointer text-base ${
             activeTab === index
-              ? "text-[#E97919] border-b-4 border-[#E97919]"
-              : "text-[#6B888D]"
+              ? 'text-secondary font-bold border-b-3 border-secondary'
+              : 'hover:text-light-gray font-medium text-light-grey'
           }`}
         >
           {label}
-        </span>
+        </div>
       ))}
     </div>
   );

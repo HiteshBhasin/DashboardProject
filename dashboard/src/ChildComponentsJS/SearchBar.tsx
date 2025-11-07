@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, ChangeEvent } from "react";
-import { FaSearch } from "react-icons/fa";
+import { Search } from "lucide-react";
 
 interface SearchBarProps {
   placeholderDescription?: string;
@@ -20,7 +20,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholderDescription, onChange 
   return (
     <div className="relative flex items-center justify-start mb-[30px] pt-[35px]">
       
-      <FaSearch 
+      <Search 
       // className="absolute left-[20px] text-[#0D525C] pointer-events-none text-[25px]" 
       className="absolute left-5 md:left-[20px] text-[#0D525C] text-lg md:text-[25px] pointer-events-none" 
 

@@ -25,12 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased font-sans`}>
-        <div className="flex min-h-screen">
+      <body className="h-screen flex antialiased font-sans">
+        <div className="flex min-h-screen fixed">
           <NavSideBar />  
           <div className='flex flex-col flex-1'>
             <Header />
-            <main className="flex-1 p-6 bg-gray-100"> 
+            <main className="flex-1 p-6 bg-gray-100 sticky"> 
               {children}
             </main>
           </div>

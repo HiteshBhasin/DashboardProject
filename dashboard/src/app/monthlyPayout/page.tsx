@@ -11,20 +11,20 @@ import {
   TableHead,
   TableCell,
   TableCaption,
-} from "../ChildComponentsJS/table";
-import { Buttons, buttonVariants } from "../ChildComponentsJS/button";
+} from "../../ChildComponentsJS/table";
+import { Buttons, buttonVariants } from "../../ChildComponentsJS/button";
 
-import { DataTable } from "../ChildComponentsJS/DataTable/data-table";
-import { columns, Properties } from "../ChildComponentsJS/DataTable/columns";
+import { DataTable } from "../../ChildComponentsJS/DataTable/data-table";
+import { columns, Properties } from "../../ChildComponentsJS/DataTable/columns";
 
 
-import Header from "../ChildComponentsJS/Header";
-import NavSideBar from "../ChildComponentsJS/NavSideBar";
-import PageTitle from "../ChildComponentsJS/PageTitle";
-import Tabs from "../ChildComponentsJS/Tabs";
-import ArrowAndDescription from "../ChildComponentsJS/ArrowAndDescription";
-import Button from "../ChildComponentsJS/Buttons";
-import RegularCard from "../ChildComponentsJS/DetailCard";
+import Header from "../../ChildComponentsJS/Header";
+import NavSideBar from "../../ChildComponentsJS/NavSideBar";
+import PageTitle from "../../components/PageTitle";
+import Tabs from "../../components/Tabs";
+import ArrowAndDescription from "../../ChildComponentsJS/ArrowAndDescription";
+import Button from "../../ChildComponentsJS/Buttons";
+import RegularCard from "../../ChildComponentsJS/DetailCard";
 
 
 interface Staff {
