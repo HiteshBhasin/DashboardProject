@@ -70,7 +70,7 @@ export function DataTable<TData, TValue>(
 
     return (
         <div>
-            <div className="flex py-3">
+            <div className="flex gap-2 py-3">
                 <div className="flex items-center ">
                     <Input
                         placeholder="Search..."

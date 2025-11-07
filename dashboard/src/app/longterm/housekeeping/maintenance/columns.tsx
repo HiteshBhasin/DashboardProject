@@ -38,7 +38,7 @@ export const columns: ColumnDef<Properties>[] = [
         cell: ({ row }) => {
         const task = row.getValue("task") as string;
         return (
-        <div className="w-[50%] flex items-center gap- font-semibold">
+        <div className="w-[50%] underline flex items-center gap- font-semibold text-">
         <span>{task}</span>
         </div>
         )
