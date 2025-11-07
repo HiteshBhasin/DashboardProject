@@ -2,6 +2,7 @@ import { columns, Properties } from "./columns"
 import { DataTable } from "./data-table"
 import SectionMenu from "../../../../components/SectionMenu";
 
+
 async function getData(): Promise<Properties[]> {
     // Fetch data from your API here.
     return [
@@ -24,7 +25,7 @@ async function getData(): Promise<Properties[]> {
         {
             task: "Unit Repair",
             task_id: "#99999",
-            assigned_to: "Cameron Finnson",
+            assigned_to: "Cameron Finnsons",
             due_at: new Date("9999-12-31"), // Represents December 31, 9999
             property: "121-123 Clyde Road",
             status: "Overdue",

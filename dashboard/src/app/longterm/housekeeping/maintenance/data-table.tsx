@@ -4,6 +4,10 @@ import * as React from "react"
 
 import { Button } from "../../../../components/table/button"
 import { Input } from "../../../../components/table/input"
+import FilterButton from "../../../../components/FilterButton"
+import Buttons from "../../../../ChildComponentsJS/Buttons"
+
+import {Plus} from 'lucide-react'
 
 import {
     ColumnDef,
@@ -38,6 +42,18 @@ interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 }
+
+//
+import { RowData } from "@tanstack/react-table";
+
+//Declare the meta object width as string
+declare module "@tanstack/react-table" {
+  interface ColumnMeta<TData extends RowData, TValue> {
+    //Optional column width percentage
+    width?: string;
+  }
+}
+
 
 export function DataTable<TData, TValue>(
     {columns, data,}: DataTableProps<TData, TValue>
@@ -81,10 +97,11 @@ export function DataTable<TData, TValue>(
                         className="max-w-sm"
                     />
                 </div>
-
+                {/* <FilterButton/> */}
+                
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="ml-auto">
+                        <Button variant="outline" >
                             Columns
                         </Button>
                     </DropdownMenuTrigger>
@@ -110,6 +127,10 @@ export function DataTable<TData, TValue>(
                             })}
                     </DropdownMenuContent>
                 </DropdownMenu>
+                <div className="ml-auto">
+                    <Buttons icon={<Plus />}  buttonName="Add" />
+                </div>
+                
             </div>
             <div className="overflow-hidden rounded-md border">
                 <Table className="w-full h-48">
@@ -118,7 +139,7 @@ export function DataTable<TData, TValue>(
                             <TableRow className="text-[#043036]" key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
                                     return (
-                                        <TableHead key={header.id}>
+                                        <TableHead key={header.id} style={{ width: header.column.columnDef.meta?.width }}>
                                             {header.isPlaceholder
                                                 ? null
                                                 : flexRender(
@@ -140,7 +161,7 @@ export function DataTable<TData, TValue>(
                                 }
                                 >
                                     {row.getVisibleCells().map((cell) => (
-                                        <TableCell key={cell.id}>
+                                        <TableCell key={cell.id} style={{ width: cell.column.columnDef.meta?.width }}>
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </TableCell>
                                     ))}

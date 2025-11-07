@@ -35,10 +35,11 @@ export const columns: ColumnDef<Properties>[] = [
                 <DataTableColumnHeader column={column} title="Task" />
             )
         },
+        meta: {width: "40%"},
         cell: ({ row }) => {
         const task = row.getValue("task") as string;
         return (
-        <div className="w-[50%] underline flex items-center gap- font-semibold text-">
+        <div className=" underline flex items-center gap- font-semibold text-">
         <span>{task}</span>
         </div>
         )
@@ -47,7 +48,7 @@ export const columns: ColumnDef<Properties>[] = [
     {
         accessorKey: "task_id",
         enableSorting: false,
-
+        meta: {width: "5%"},
         header: ({ column }) => {
         return (
             <DataTableColumnHeader column={column} title="" />
@@ -63,6 +64,7 @@ export const columns: ColumnDef<Properties>[] = [
     },
     {
         accessorKey: "assigned_to",
+        meta: {width: "10%"},
         header: ({ column }) => {
             return (
                 <DataTableColumnHeader column={column} title="Assigned To" />
@@ -82,6 +84,7 @@ export const columns: ColumnDef<Properties>[] = [
     },
     {
         accessorKey: "due_at",
+        meta: {width: "15%"},
         header: ({ column }) => {
             return (
                 <DataTableColumnHeader column={column} title="Due At" />
@@ -101,6 +104,7 @@ export const columns: ColumnDef<Properties>[] = [
     },
     {
         accessorKey: "property",
+        meta: {width: "15%"},
         header: ({ column }) => {
             return (
                 <DataTableColumnHeader column={column} title="Property" />
@@ -109,6 +113,7 @@ export const columns: ColumnDef<Properties>[] = [
     },
     {
         accessorKey: "status",
+        meta: {width: "10%"},
         header: ({ column }) => {
             return (
                 <DataTableColumnHeader column={column} title="Status" />
@@ -165,6 +170,7 @@ export const columns: ColumnDef<Properties>[] = [
     },
     {
         id: "actions",
+        meta: {width: "5%"},
         cell: ({ row }) => {
             const property = row.original
 
