@@ -1,15 +1,29 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import KpiCard from "../../../components/KpiCard";
-import SectionMenu from "../../../components/SectionMenu";
 import BarGraph from "../../../components/charts/BarGraph";
 import PieGraph from "../../../components/charts/PieGraph";
+import HorBarGraph from "../../../components/charts/DynamicBarGraph";
 
 import PageTitle from "../../../components/PageTitle";
 import Tabs from "../../../components/Tabs";
+import { DataTable } from "../../../components/Table/data-table";
+import { createColumns } from "../../../components/Table/createColumns";
 
 
-export default function Home() {
+interface CostPerProperty {
+  Units: string;
+  Task: number;
+  Details: string;
+  Cost: number;
+}
+
+const columns = createColumns<CostPerProperty>([
+  "Units", "Task", "Details", "Cost"
+]);
+
+
+export default function LongTermHousekeeping() {
 
   const [activeTab, setActiveTab] = useState(0);
   const [tabHistory, setTabHistory] = useState<number[]>([]);
@@ -21,6 +35,26 @@ export default function Home() {
     avgResolution: 7,
     totalCost: 5250
   };
+
+  const costPerPropertyItems : CostPerProperty[] = [{
+    Units: '3A',
+    Task: 2,
+    Details: "Kitchen Sink Leak",
+    Cost: 500
+  }, 
+  {Units: '3A',
+  Task: 2,
+  Details: "Kitchen Sink Leak",
+  Cost: 500},
+  {Units: '3A',
+  Task: 2,
+  Details: "Kitchen Sink Leak",
+  Cost: 500},
+  {Units: '3A',
+  Task: 2,
+  Details: "Kitchen Sink Leak",
+  Cost: 500},
+  ];
 
   const tabLabels = ['Overview', 'Maintenance', 'Cleaning'];
 
@@ -35,14 +69,14 @@ export default function Home() {
     <div className ="flex flex-col gap-1 ">
       <PageTitle pageTitle="Long-term Housekeeping" />
       <Tabs tabs={tabLabels} activeTab={activeTab} onTabClick={handleTabClick} />
-      <div className="flex flex-wrap gap-3 mb-2">
+      <div className="flex flex-wrap flex-row gap-3 mb-2">
         <KpiCard title="Total Requests" value={data.totalRequest}/>
         <KpiCard title="Complete Requests" value={data.completeRequest}/>
         <KpiCard title="Pending Requests" value={data.pendingRequest}/>
         <KpiCard title="Avg. Resolution Time" value={`${data.avgResolution} days`} />
         <KpiCard title="Total Maintenance Cost" value={`$${data.totalCost}`}/>
       </div>
-      <div className='flex flex-wrap gap-3'>
+      <div className='flex flex-wrap flex-row gap-3 mb-2'>
         <div className="flex-2">
           <BarGraph
             title='Monthly Maintenance Expenses'
@@ -58,6 +92,24 @@ export default function Home() {
             dataValues={[3, 6, 12]}
             colors={["#E14B4B", "#EE7C1B", "#4B9E57"]}
             hoverColors={["#f26767", "#f7a94d", "#62b06a"]}
+          />
+        </div>
+      </div>
+      <div className='flex flex-wrap flex-row gap-3'>
+        <HorBarGraph
+            title="Average Resolution Time by Priority"
+            labels={["High", "Medium", "Low"]}
+            dataValues={[3, 6, 12]}
+            colors={["#E14B4B", "#EE7C1B", "#4B9E57"]}
+            hoverColors={["#f26767", "#f7a94d", "#62b06a"]}
+            label="Days"
+            indexAxis="y"
+          />
+        <div className="flex-1">
+          <DataTable
+            title="Tasks Breakdown"
+            columns={columns}
+            data={costPerPropertyItems}
           />
         </div>
       </div>

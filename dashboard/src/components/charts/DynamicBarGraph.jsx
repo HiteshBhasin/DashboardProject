@@ -14,6 +14,23 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+/**
+ * @typedef {Object} DynamicBarChartProps
+ * @property {string} [title="Bar Chart"] - chart title
+ * @property {string[]} [labels=[]] - Chart labels like categories, names, etc
+ * @property {number[]} [dataValues=[]] - Data for each label
+ * @property {string[]} [colors=[]] - Colors for the bars 
+ * @property {string[]} [hoverColors=[]] - Hover colors for the bars
+ * @property {string} [label="Dataset"] - The label for the entire dataset
+ * @property {"y"|"x"} [indexAxis="y"] - Axis on which to draw the bars ("y" for horizontal, "x" for vertical).
+ * @property {string} [height="300px"] - CSS height value for the chart container
+ */
+
+/**
+ * Renders the bar chart using react-chartjs-2
+ * @param {DynamicBarChartProps} props
+ */
+
 const DynamicBarChart = ({
   title = "Bar Chart",
   labels = [],
@@ -22,7 +39,6 @@ const DynamicBarChart = ({
   hoverColors = [],
   label = "Dataset",
   indexAxis = "y", // "y" for horizontal, "x" for vertical
-  height = "300px",
 }) => {
   const data = {
     labels,
@@ -69,8 +85,10 @@ const DynamicBarChart = ({
   };
 
   return (
-    <div style={{ height }}>
-      <Bar data={data} options={options} />
+    <div className="p-6 bg-white shadow-xl rounded-xl border border-gray-100 transition-shadow hover:shadow-2xl">
+      <div className="h-80 w-full">
+        <Bar data={data} options={options} />
+      </div>
     </div>
   );
 };

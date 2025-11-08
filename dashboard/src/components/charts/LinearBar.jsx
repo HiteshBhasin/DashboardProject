@@ -14,6 +14,24 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+/**
+ * @typedef {Object} DynamicBarChartProps
+ * @property {string} [title="Bar Chart"] - chart title
+ * @property {string[]} [labels=[]] - Chart labels like categories, names, etc
+ * @property {number[]} [dataValues=[]] - Data for each label
+ * @property {string[]} [colors=[]] - Colors for the bars 
+ * @property {string[]} [hoverColors=[]] - Hover colors for the bars
+ * @property {string} [label="Dataset"] - The label for the entire dataset
+ * @property {"y"|"x"} [indexAxis="y"] - Axis on which to draw the bars ("y" for horizontal, "x" for vertical).
+ * @property {boolean} [stacked = false] - for multi-series (e.g. Occupancy)
+ * @property {number} [barThickness = 30] - the thickness of the linear bar
+ */
+
+/**
+ * Renders the bar chart using react-chartjs-2
+ * @param {DynamicBarChartProps} props
+ */
+
 const DynamicBarChart = ({
   title = "Bar Chart",
   labels = [],
@@ -22,8 +40,7 @@ const DynamicBarChart = ({
   hoverColors = [],
   label = "Dataset",
   indexAxis = "y", // "y" for horizontal, "x" for vertical
-  height = "300px",
-  stacked = false, // for multi-series (e.g., Occupancy)
+  stacked = true, 
   barThickness = 30,
 }) => {
   // Handle single or multiple datasets automatically

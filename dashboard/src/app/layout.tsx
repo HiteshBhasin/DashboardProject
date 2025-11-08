@@ -23,14 +23,14 @@ export default function RootLayout({
 }: Readonly<{ // Keep Readonly type from your original file
   children: React.ReactNode;
 }>) {
-  return (
+   return (
     <html lang="en">
-      <body className="h-screen flex antialiased font-sans">
-        <div className="flex min-h-screen fixed">
+      <body className={`antialiased font-sans`}>
+        <div className="flex min-h-screen">
           <NavSideBar />  
           <div className='flex flex-col flex-1'>
             <Header />
-            <main className="flex-1 p-6 bg-gray-100 sticky"> 
+            <main className="flex-1 p-6 bg-gray-100"> 
               {children}
             </main>
           </div>
