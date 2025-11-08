@@ -87,7 +87,7 @@ export default function LongTermHousekeeping() {
         </div>
         <div className="flex-1">
           <PieGraph
-            title='Average Resolution Time by Priority'
+            title='Request Status'
             labels={["High", "Medium", "Low"]}
             dataValues={[3, 6, 12]}
             colors={["#E14B4B", "#EE7C1B", "#4B9E57"]}

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import KpiCard from "../../../components/KpiCard";
 import PieGraph from "../../../components/charts/PieGraph";
 import DynamicBarGraph from "../../../components/charts/DynamicBarGraph";
-import LinearBar from "../../../components/charts/DynamicBarGraph";
+import LinearBar from "../../../components/charts/LinearBar";
 
 import PageTitle from "../../../components/PageTitle";
 import Tabs from "../../../components/Tabs";
@@ -79,13 +79,12 @@ export default function TenantsPage() {
               />
             </div>
             <div className="flex-1">
-              <LinearBar
+              <PieGraph
                 title='Occupancy Rate'
                 labels={["Occupied", "Vacant"]}
                 dataValues={[80, 20]}
                 colors={["#0D525C", "#EE7C1B",]}
                 hoverColors={["#116e7cff", "#f7b25f"]}
-                indexAxis="y"
               />
             </div>
           </div>

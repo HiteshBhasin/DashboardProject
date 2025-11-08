@@ -15,7 +15,7 @@ const Tabs: React.FC<TabsProps> = ({
 }) => {
   return (
     <div className="flex flex-wrap gap-7 ml-1 whitespace-nowrap
-    border-b-1 border-light-grey mb-2 text-base text-sm w-full">
+    border-b-1 border-light-grey mb-4 text-base text-sm w-full">
       {tabs.map((label, index) => (
         <div
           key={index}
