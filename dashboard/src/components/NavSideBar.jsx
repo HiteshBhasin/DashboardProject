@@ -52,7 +52,12 @@ function NavSideBar() {
 
     const NavLinkItem = ({link}) => {
         const Icon = link.icon; //Set a simplified nickname for each icons of the page.
-        const isActive = pathname === link.href; //check if the user is in the current page.
+        //const isActive = pathname.startsWith(link.href); //check if the user is in the current page.
+        const isActive =
+        link.href === '/'
+        ? pathname === '/' // Only active on the homepage
+        : pathname.startsWith(link.href);
+
 
         return(
             <Link 
