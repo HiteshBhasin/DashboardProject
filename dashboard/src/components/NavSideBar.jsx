@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
     RiDashboardFill, RiHome2Fill, RiBrush3Fill, RiContactsBook2Fill, RiGobletBrokenFill, RiUserFill, RiHandCoinFill,
-    RiClipboardFill, RiMoneyDollarCircleFill, RiMoneyDollarBoxFill, RiAdvertisementFill, RiLineChartFill, RiAlertFill,
-    RiSettings3Fill, RiLogoutBoxFill
+    RiClipboardFill, RiMoneyDollarCircleFill, RiMoneyDollarBoxFill, RiAdvertisementFill, RiLineChartFill, RiAlertFill
     } from '@remixicon/react';
 
 const navLinks = [
@@ -42,11 +41,6 @@ const navLinks = [
     }
 ];
 
-const bottomButtons = [
-    {name: 'Settings', href: '/settings', icon: RiSettings3Fill},
-    {name: 'Log-out', href: '/log-in', icon: RiLogoutBoxFill}
-];
-
 function NavSideBar() {
     const pathname = usePathname(); //Get the current path of the page
 
@@ -60,13 +54,13 @@ function NavSideBar() {
                 className={`
                 flex items-center p-1 rounded-lg transition-colors
                 ${isActive 
-                    ? 'bg-secondary text-white' 
+                    ? 'bg-navorange text-white' 
                     : 'hover:bg-light-gray hover:text-white' 
                 }
                 `} 
             > {/*Setting the layout of the sidebar and check if the user is in the page*/}
-                <Icon size={16} className="flex-shrink-0 mr-2 ml-1" /> {/*Prevent the icon from shrinking*/}
-                <span className="ml-1 whitespace-nowrap text-base text-sm"> {/*Add margin-left and prevents making a new line */}
+                <Icon size={20} className="flex-shrink-0 mr-2 ml-1" /> {/*Prevent the icon from shrinking*/}
+                <span className="ml-1 whitespace-nowrap text-base text-base"> {/*Add margin-left and prevents making a new line */}
                     {link.name}
                 </span>
             </Link>
@@ -106,12 +100,6 @@ function NavSideBar() {
                                     </>
                                 )}
                             </div>
-                        ))}
-                    </div>
-                    {/*Bottom Buttons*/}
-                    <div className="mt-auto pt-3 pt-15 space-y-1">
-                        {bottomButtons.map((link, index) => (
-                            <NavLinkItem key={index} link={link} />
                         ))}
                     </div>
                 </nav>

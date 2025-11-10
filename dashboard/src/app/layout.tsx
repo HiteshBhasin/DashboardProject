@@ -26,15 +26,17 @@ export default function RootLayout({
    return (
     <html lang="en">
       <body className={`antialiased font-sans`}>
-        <div className="flex min-h-screen">
-          <NavSideBar />  
-          <div className='flex flex-col flex-1'>
-            <Header />
-            <main className="flex-1 p-6 bg-gray-100"> 
-              {children}
-            </main>
-          </div>
+        <div className={`fixed top-0 left-0 h-screen z-30 w-64`}>
+          <NavSideBar />
         </div>
+        <div className={`flex flex-col flex-1 min-h-screen ml-64`}>
+          <div className={`fixed top-0 left-64 right-0 z-20 bg-white shadow h-20`}>
+                <Header />
+          </div>
+          <main className={`flex-1 p-6 bg-gray-100 mt-18 overflow-y-auto`}> 
+            {children}
+          </main>
+          </div>
       </body>
     </html>
   );

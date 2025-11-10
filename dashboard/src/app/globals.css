@@ -8,6 +8,7 @@
   --secondaryColour: #EE7C1B;
   --offGrey: #6B888D;
   --navGrey: #90B0B4;
+  --navOrange: #CC5500;
   --radius: 0.625rem;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -48,6 +49,7 @@
   --color-secondary: var(--secondaryColour);
   --color-light-grey: var(--offGrey);
   --color-navgrey: var(--navGrey);
+  --color-navorange: var(--navOrange);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
