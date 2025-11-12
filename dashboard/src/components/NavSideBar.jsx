@@ -55,7 +55,7 @@ function NavSideBar() {
                 flex items-center p-1 rounded-lg transition-colors
                 ${isActive 
                     ? 'bg-navorange text-white' 
-                    : 'hover:bg-light-gray hover:text-white' 
+                    : 'hover-all:bg-light-grey hover-all:text-white' 
                 }
                 `} 
             > {/*Setting the layout of the sidebar and check if the user is in the page*/}

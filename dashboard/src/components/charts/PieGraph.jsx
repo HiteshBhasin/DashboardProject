@@ -27,13 +27,18 @@ export default function PieGraph({title, labels, dataValues, colors, hoverColors
     responsive: true,
     maintainAspectRatio: false,
     cutout: cutoutPercentage, // Dynamic cutout size
+    layout: {
+      padding: {right: 20},
+    },
     plugins: {
       legend: {
-        position: 'bottom',
+        position: 'right',
+        align: 'center', 
         labels: {
           boxWidth: 15,
           color: "#333",
           font: { size: 12 },
+          usePointStyle: true,
         },
       },
       title: {
@@ -42,6 +47,7 @@ export default function PieGraph({title, labels, dataValues, colors, hoverColors
         color: "#0D525C",
         font: { size: 18, weight: "700" },
         align: "start",
+        padding: { bottom: 30 }
       },
       tooltip: {
         callbacks: {
@@ -66,12 +72,12 @@ export default function PieGraph({title, labels, dataValues, colors, hoverColors
     },
     animation: { animateScale: true },
   };
-
+  //border-light-grey
   return (
-    <div className="p-6 bg-white shadow-lg rounded-xl border border-gray-100 transition-shadow hover:shadow-2xl">
+    <div className="p-6 bg-white shadow-xl rounded-xl border  transition-shadow hover:shadow-2xl">
       {/* Use a fixed inner container to ensure the doughnut chart renders correctly */}
-      <div className="h-80 w-full flex justify-center items-center">
-        <div className="w-64 h-64 md:w-80 md:h-80">
+      <div className="flex items-center justify-center w-full max-w-3xl mx-auto">
+        <div className="relative w-full max-w-[500px] h-80">
           <Doughnut data={data} options={options} />
         </div>
       </div>

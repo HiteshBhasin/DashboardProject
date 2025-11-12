@@ -1,11 +1,11 @@
 @import "tailwindcss";
 /* @import "tw-animate-css"; */ /* I didn't know why this import gave me an error, so I just commented it out */
-
+@custom-variant hover-all (&:hover);
 
 :root {
   --background: #F3F3F3;
   --primaryColour: #0D525C;
-  --secondaryColour: #EE7C1B;
+  --secondaryColour: #FF700A;
   --offGrey: #6B888D;
   --navGrey: #90B0B4;
   --navOrange: #CC5500;

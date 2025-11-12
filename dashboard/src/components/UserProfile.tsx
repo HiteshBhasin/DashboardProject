@@ -47,7 +47,7 @@ const UserInfoDropdown : FC<DropdownProps> = ({user, menuItems}) => {
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className='flex item-center w-full p-2 text-left transition duration-150 
-                ease-in-out hover:bg-light-grey'
+                ease-in-out hover-all:bg-light-grey rounded-xl'
             >
                 <div className='flex flex-row flex-1 items-center cursor-pointer'>
                     <img 
@@ -86,10 +86,10 @@ const UserInfoDropdown : FC<DropdownProps> = ({user, menuItems}) => {
                                     e.preventDefault();
                                     handleAction(item.href);
                                 }}
-                                className="flex items-center px-3 py-2 text-sm text-white rounded-lg hover:bg-secondary hover:text-white transition duration-150 ease-in-out group"
+                                className="flex items-center px-3 py-2 text-sm text-white rounded-lg 
+                                hover-all:bg-light-grey transition duration-150 ease-in-out  "
                             >
-                                {/* Item.icon is a component, not a property */}
-                                <item.icon className="w-5 h-5 mr-3 text-white group-hover:text-secondary" />
+                                <item.icon className="w-5 h-5 mr-3 text-white" />
                                 {item.name}
                             </a>
                         ))}

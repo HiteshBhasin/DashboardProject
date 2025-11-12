@@ -9,6 +9,27 @@ import Tabs from "../../../components/Tabs";
 import { DataTable } from "../../../components/Table/data-table";
 import { createColumns } from "../../../components/Table/createColumns";
 
+interface Cards {
+  totalComplete: number;
+  totalReported: number;
+  totalVerified: number;
+  totalCharges: number;
+  avgHours: number;
+}
+
+interface BarGraphData {
+  title: string;
+  labels: string[];
+  label: string;
+  dataValues: number[];
+}
+
+interface PieData {
+  title: string;
+  labels: string[];
+  dataValues: number[];
+}
+
 interface StaffSummary {
   Staff: string;
   Task: number;
@@ -34,60 +55,12 @@ export default function MonthlyPayout() {
 
   const [activeTab, setActiveTab] = useState(0);
   const [tabHistory, setTabHistory] = useState<number[]>([]);
-
-  const data = {
-    totalComplete: 48,
-    totalReported: 286.5,
-    totalVerified: 286.5,
-    totalCharges: 3650,
-    avgHours: 35
-  };
-
-  const staffItems : StaffSummary[] = [
-    {
-      Staff: "Dana",
-      Task: 12,
-      Hours: 670,
-      Labour: 1200
-    },
-    {
-      Staff: "Dana",
-      Task: 12,
-      Hours: 670,
-      Labour: 1200
-    },
-    {
-      Staff: "Dana",
-      Task: 12,
-      Hours: 670,
-      Labour: 1200
-    },
-    {
-      Staff: "Dana",
-      Task: 12,
-      Hours: 670,
-      Labour: 1200
-    },
-    {
-      Staff: "Dana",
-      Task: 12,
-      Hours: 670,
-      Labour: 1200
-    }
-  ];
-
-  const categoryItems : CategoryBreakdown[] = [
-    {
-      Category: "Maintenance",
-      Hours: 200,
-      Cost: 4000
-    },
-    {
-      Category: "Cleaning",
-      Hours: 200,
-      Cost: 4000
-    },
-  ];
+  const [cards, setCards] = useState<Cards | null>(null);
+  const [taskStatus, setTaskStatus] = useState<BarGraphData | null>(null);
+  const [labourCharges, setLabourCharges] = useState<BarGraphData | null>(null);
+  const [hourComparison, setHourComparison] = useState<PieData | null>(null);
+  const [staffItems, setStaffItems] = useState<StaffSummary[]>([]);
+  const [categoryItems, setCategoryItems] = useState<CategoryBreakdown[]>([]);
 
   const tabLabels = ['Overview', 'List'];
 
@@ -98,26 +71,47 @@ export default function MonthlyPayout() {
     }
   };
 
+  // Fetch tenant data
+    useEffect(() => {
+      async function fetchTenantData() {
+        try {
+          const res = await fetch("/api/monthlypayout");
+          const data = await res.json();
+          setCards(data.cards);
+          setTaskStatus(data.taskStatus);
+          setLabourCharges(data.labourCharges);
+          setHourComparison(data.hourComparison);
+          setStaffItems(data.staffItems);
+          setCategoryItems(data.categoryItems);
+        }
+        catch (err){
+          console.error("Error fetching tenant data:", err);
+        }
+      }
+      fetchTenantData();
+    }, []);
+
   return (
     <div className ="flex flex-col gap-1 ">
       <PageTitle pageTitle="Monthly Payout" />
       <Tabs tabs={tabLabels} activeTab={activeTab} onTabClick={handleTabClick} />
-      {activeTab === 0 && (
+      {activeTab === 0 && cards && taskStatus && labourCharges && hourComparison &&
+        staffItems && categoryItems && (
         <>
           <div className="flex flex-wrap flex-row gap-3 mb-2">
-            <KpiCard title="Total Task Completed" value={data.totalComplete}/>
-            <KpiCard title="Total Reported Hours" value={`${data.totalReported} hours`}/>
-            <KpiCard title="Total Verfied Hours" value={`${data.totalVerified} hours`}/>
-            <KpiCard title="Total Labour Charges" value={`$${data.totalCharges}`} />
-            <KpiCard title="Avg. Hours per Staff" value={`${data.avgHours} hours`}/>
+            <KpiCard title="Total Task Completed" value={cards.totalComplete}/>
+            <KpiCard title="Total Reported Hours" value={`${cards.totalReported} hours`}/>
+            <KpiCard title="Total Verfied Hours" value={`${cards.totalVerified} hours`}/>
+            <KpiCard title="Total Labour Charges" value={`$${cards.totalCharges}`} />
+            <KpiCard title="Avg. Hours per Staff" value={`${cards.avgHours} hours`}/>
           </div>
           <div className='flex flex-wrap flex-row gap-3 mb-2'>
             <div className="flex-1">
               <DynamicBarGraph
                 title='Task Status Summary'
-                labels={["In Progress", "Complete", "Not Started"]}
-                label='Tasks'
-                dataValues={[39, 54, 7]}
+                labels={taskStatus.labels}
+                label={taskStatus.label}
+                dataValues={taskStatus.dataValues}
                 colors={["#EE7C1B", "#0D525C", "#b5b5b5"]}
                 hoverColors={["rgba(245, 155, 60, 1)", "#116e7cff","#cfcfcf"]}
                 indexAxis='x'
@@ -126,9 +120,9 @@ export default function MonthlyPayout() {
             <div className="flex-1">
               <DynamicBarGraph
                 title='Labour Charges Comparison'
-                labels={["Sept", "Oct (present)", "Nov (projected)"]}
-                label='Labour Charges'
-                dataValues={[4000, 4250, 5000]}
+                labels={labourCharges.labels}
+                label={labourCharges.label}
+                dataValues={labourCharges.dataValues}
                 colors={["#EE7C1B", "#0D525C", "#b5b5b5"]}
                 hoverColors={["rgba(245, 155, 60, 1)", "#116e7cff","#cfcfcf"]}
                 indexAxis='x'
@@ -137,8 +131,8 @@ export default function MonthlyPayout() {
               <div className="flex-1">
               <PieGraph
                 title='Maintenance vs Cleaning (Hours)'
-                labels={["Maintenance", "Cleaning"]}
-                dataValues={[75, 25]}
+                labels={hourComparison.labels}
+                dataValues={hourComparison.dataValues}
                 colors={["#0D525C", "rgba(238, 124, 27, 1)"]}
                 hoverColors={["#116e7cff", "rgba(245, 155, 60, 1)"]}
               />

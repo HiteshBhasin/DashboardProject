@@ -40,6 +40,7 @@ const DynamicBarChart = ({
   label = "Dataset",
   indexAxis = "y", // "y" for horizontal, "x" for vertical
 }) => {
+    
   const data = {
     labels,
     datasets: [
@@ -64,28 +65,41 @@ const DynamicBarChart = ({
         display: true,
         text: title,
         color: "#0D525C",
-        font: { size: 16, weight: "600" },
+        font: { size: 18, weight: "700" },
         align: "start",
+        padding: { bottom: 30 }
       },
     },
     scales: {
       x: {
         grid: {
-          color: "rgba(0,0,0,0.05)",
-          drawBorder: false,
+          ...(indexAxis === 'x' && {
+          display: false
+        }),
+        drawBorder: false,
+        color: "#9999995b",
+        lineWidth: 2
         },
-        ticks: { color: "#444" },
+        
+        ticks: { color: "#999" },
       },
       y: {
-        grid: { display: false, drawBorder: false },
+        grid: {
+          ...(indexAxis === 'y' && {
+            display: false
+          }),
+          color: "#9999995b",
+          drawBorder: false,
+          lineWidth: 2
+        },
         border: { display: false },
-        ticks: { color: "#444" },
+        ticks: { color: "#999" },
       },
     },
   };
-
+  // border-light-grey
   return (
-    <div className="p-6 bg-white shadow-xl rounded-xl border border-gray-100 transition-shadow hover:shadow-2xl">
+    <div className="p-6 bg-white shadow-xl rounded-xl border transition-shadow hover:shadow-2xl">
       <div className="h-80 w-full">
         <Bar data={data} options={options} />
       </div>
