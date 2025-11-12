@@ -145,6 +145,8 @@ export default function MonthlyPayout() {
                 title="Staff Summary (Top Highest Labour)"
                 columns={staffColumns}
                 data={staffItems}
+                hasPage={false}
+                hasSearch={false}
               />
             </div>
             <div className="flex-1">
@@ -152,6 +154,8 @@ export default function MonthlyPayout() {
                 title="Category Breakdown"
                 columns={categoryColumns}
                 data={categoryItems}
+                hasSearch={false}
+                hasPage={false}
               />
             </div>              
           </div>

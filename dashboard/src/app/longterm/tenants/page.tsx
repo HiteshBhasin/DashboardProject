@@ -148,24 +148,24 @@ export default function TenantsPage() {
                 hoverColors={["#116e7cff", "#f7b25f"]}
               />
             </div>
-            <div className="flex-1 bg-white border border-light-grey rounded-xl overflow-y-auto min-w-80 pt-2 pl-3 pr-3 pb-3">
+            <div className="flex-1 bg-white border shadow-lg rounded-xl border transition-shadow hover:shadow-2xl overflow-y-auto min-w-80 pt-2 pl-3 pr-3 pb-3">
                 <PageTitleCom pageTitle="Tenant With Outstanding Balance"/>
-
+                <div className="flex flex-col item-center gap-2 max-h-75 overflow-y-auto">
                 {tenantBalance.length > 0 ? (
-                  tenantBalance.map((input, index) => (
-                    <div className="flex flex-col gap-3" key={index}>
+                  tenantBalance.map((input, index) => (  
                       <SpecialCard
+                        key={index}
                         title={input.name}
                         subtitle={input.property}
                         status={input.balance}
                       />
-                    </div>
                   ))
                 ) : (
                   <div className="text-gray-500 pt-4">
                     No tenant balance data available.
                   </div>
                 )}
+              </div>
               </div>
           </div>
         </>

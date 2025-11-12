@@ -49,8 +49,8 @@ const DynamicBarChart = ({
         data: dataValues,
         backgroundColor: colors,
         hoverBackgroundColor: hoverColors,
-        borderRadius: 6,
-        barThickness: 30,
+        borderRadius: 15,
+        barThickness: 25,
       },
     ],
   };
@@ -78,9 +78,8 @@ const DynamicBarChart = ({
         }),
         drawBorder: false,
         color: "#9999995b",
-        lineWidth: 2
+        lineWidth: 2,
         },
-        
         ticks: { color: "#999" },
       },
       y: {
@@ -90,7 +89,7 @@ const DynamicBarChart = ({
           }),
           color: "#9999995b",
           drawBorder: false,
-          lineWidth: 2
+          lineWidth: 2,
         },
         border: { display: false },
         ticks: { color: "#999" },
@@ -99,7 +98,7 @@ const DynamicBarChart = ({
   };
   // border-light-grey
   return (
-    <div className="p-6 bg-white shadow-xl rounded-xl border transition-shadow hover:shadow-2xl">
+    <div className="p-6 bg-white shadow-lg rounded-xl border transition-shadow hover:shadow-2xl">
       <div className="h-80 w-full">
         <Bar data={data} options={options} />
       </div>
